@@ -151,7 +151,7 @@
         const dbRef = ref(db, 'charevelacao/polls');
 
         let myChart = null;
-        let polls = [
+        let defaultPolls = [
             {
                 id: "poll_1",
                 title: "Qual será o palpite para o Chá de Revelação?",
@@ -236,19 +236,20 @@
             }
         ];
 
+        let polls = defaultPolls;
+
         // Escutar em tempo real do Firebase
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                // Ao invés de apenas substituir, garante que se novas enquetes foram adicionadas no código, 
-                // mas não existem no firebase, elas sejam incluídas, e as existentes sejam atualizadas.
-                if (data.length < polls.length) {
-                    set(dbRef, polls);
-                } else {
-                     polls = data;
-                }
+                // Mescla os dados do Firebase garantindo que todas as enquetes novas existam
+                polls = defaultPolls.map(defaultPoll => {
+                    const existing = data.find(p => p.id === defaultPoll.id);
+                    return existing ? existing : defaultPoll;
+                });
             } else {
-                set(dbRef, polls);
+                set(dbRef, defaultPolls);
+                polls = defaultPolls;
             }
             updateUI();
         });
@@ -353,18 +354,20 @@
             const labels = poll.options.map(opt => opt.text);
             const data = poll.options.map(opt => opt.votes);
 
-            // Cores dinâmicas com base no ID da enquete para garantir o comportamento correto
+            // Garante rosa e azul se for a enquete principal (poll_1) ou se o título contiver 'Team Manu' / 'Chá de Revelação'
             let bgColors, borderColors;
-            if (poll.id === "poll_1") {
+            const isMainPoll = poll.id === "poll_1" || poll.title.toLowerCase().includes("chá de revelação") || poll.title.toLowerCase().includes("team manu");
+
+            if (isMainPoll) {
                 bgColors = ['rgba(244, 114, 182, 0.8)', 'rgba(96, 165, 250, 0.8)'];
                 borderColors = ['rgb(236, 72, 153)', 'rgb(59, 130, 246)'];
             } else {
                 bgColors = poll.options.map((_, i) => {
-                    const tones = ['rgba(168, 162, 158, 0.8)', 'rgba(120, 113, 108, 0.8)', 'rgba(87, 83, 78, 0.8)', 'rgba(41, 37, 36, 0.8)'];
+                    const tones = ['rgba(168, 162, 158, 0.8)', 'rgba(120, 113, 108, 0.8)', 'rgba(87, 83, 78, 0.8)', 'rgba(41, 37, 36, 0.8)', 'rgba(214, 211, 209, 0.8)'];
                     return tones[i % tones.length];
                 });
                 borderColors = poll.options.map((_, i) => {
-                    const tones = ['rgb(120, 113, 108)', 'rgb(87, 83, 78)', 'rgb(68, 64, 60)', 'rgb(28, 25, 23)'];
+                    const tones = ['rgb(120, 113, 108)', 'rgb(87, 83, 78)', 'rgb(68, 64, 60)', 'rgb(28, 25, 23)', 'rgb(168, 162, 158)'];
                     return tones[i % tones.length];
                 });
             }
