@@ -154,8 +154,7 @@
         let polls = [
             {
                 id: "poll_1",
-                title: "Qual será o palpite para o Chá de Revelação? (Principal)",
-                isMain: true,
+                title: "Qual será o palpite para o Chá de Revelação?",
                 options: [
                     { text: "Team Manu 🌸 (Menina)", votes: 0 },
                     { text: "Team Bento 🧢 (Menino)", votes: 0 }
@@ -165,7 +164,6 @@
             {
                 id: "poll_2",
                 title: "O bebê vai nascer com bastante cabelo?",
-                isMain: false,
                 options: [
                     { text: "Sim, cabeludo(a)", votes: 0 },
                     { text: "Pouco cabelo", votes: 0 },
@@ -176,7 +174,6 @@
             {
                 id: "poll_3",
                 title: "Qual será a cor dos olhos?",
-                isMain: false,
                 options: [
                     { text: "Castanhos", votes: 0 },
                     { text: "Castanho-claros", votes: 0 },
@@ -189,7 +186,6 @@
             {
                 id: "poll_4",
                 title: "Com quem o bebê será mais parecido?",
-                isMain: false,
                 options: [
                     { text: "Mamãe", votes: 0 },
                     { text: "Papai", votes: 0 },
@@ -201,7 +197,6 @@
             {
                 id: "poll_5",
                 title: "Quem vai mimar mais o bebê?",
-                isMain: false,
                 options: [
                     { text: "Mamãe", votes: 0 },
                     { text: "Papai", votes: 0 },
@@ -212,7 +207,6 @@
             {
                 id: "poll_6",
                 title: "Quem vai ser mais coruja?",
-                isMain: false,
                 options: [
                     { text: "Mamãe", votes: 0 },
                     { text: "Papai", votes: 0 },
@@ -223,7 +217,6 @@
             {
                 id: "poll_7",
                 title: "Quem vai tirar mais fotos do bebê?",
-                isMain: false,
                 options: [
                     { text: "Mamãe", votes: 0 },
                     { text: "Papai", votes: 0 },
@@ -234,7 +227,6 @@
             {
                 id: "poll_8",
                 title: "Quem vai dizer 'não pode' com mais frequência?",
-                isMain: false,
                 options: [
                     { text: "Mamãe", votes: 0 },
                     { text: "Papai", votes: 0 },
@@ -248,7 +240,13 @@
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                polls = data;
+                // Ao invés de apenas substituir, garante que se novas enquetes foram adicionadas no código, 
+                // mas não existem no firebase, elas sejam incluídas, e as existentes sejam atualizadas.
+                if (data.length < polls.length) {
+                    set(dbRef, polls);
+                } else {
+                     polls = data;
+                }
             } else {
                 set(dbRef, polls);
             }
@@ -355,9 +353,9 @@
             const labels = poll.options.map(opt => opt.text);
             const data = poll.options.map(opt => opt.votes);
 
-            // Cores dinâmicas: Se for a enquete principal, usa rosa e azul. Caso contrário, usa tons neutros.
+            // Cores dinâmicas com base no ID da enquete para garantir o comportamento correto
             let bgColors, borderColors;
-            if (poll.isMain) {
+            if (poll.id === "poll_1") {
                 bgColors = ['rgba(244, 114, 182, 0.8)', 'rgba(96, 165, 250, 0.8)'];
                 borderColors = ['rgb(236, 72, 153)', 'rgb(59, 130, 246)'];
             } else {
@@ -451,7 +449,7 @@
                         <div>
                             <div class="flex gap-2 items-center">
                                 <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${poll.active ? 'bg-stone-800 text-white' : 'bg-stone-200 text-stone-600'}">${poll.active ? 'Ativa no Telão' : 'Inativa'}</span>
-                                ${poll.isMain ? '<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200">Enquete Principal</span>' : ''}
+                                ${poll.id === "poll_1" ? '<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200">Enquete Principal</span>' : ''}
                             </div>
                             <h4 class="font-bold text-stone-800 text-sm mt-2">${poll.title}</h4>
                         </div>
