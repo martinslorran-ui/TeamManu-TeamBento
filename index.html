@@ -15,32 +15,32 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Poppins', sans-serif; }
         .bg-gender-reveal {
-            background-color: #fdfbf7;
+            background-color: #fcfbf9;
             background-image: 
-                radial-gradient(#fbcfe8 15px, transparent 16px), 
-                radial-gradient(#bfdbfe 15px, transparent 16px);
+                radial-gradient(#e7e1d5 15px, transparent 16px), 
+                radial-gradient(#dcd4c5 15px, transparent 16px);
             background-size: 60px 60px;
             background-position: 0 0, 30px 30px;
             background-blend-mode: overlay;
         }
     </style>
 </head>
-<body class="bg-gender-reveal min-h-screen text-gray-800 flex flex-col justify-between">
+<body class="bg-gender-reveal min-h-screen text-stone-700 flex flex-col justify-between">
 
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md shadow-sm border-b border-pink-100 py-4 px-6 sticky top-0 z-50">
+    <header class="bg-white/90 backdrop-blur-md shadow-sm border-b border-stone-200 py-4 px-6 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
-                <span class="text-3xl">🍼</span>
+                <span class="text-3xl">🧸</span>
                 <div>
-                    <h1 class="text-xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">Chá de Revelação: Team Manu & Team Bento</h1>
-                    <p class="text-xs text-gray-500">Escaneie o QR Code e participe da votação ao vivo!</p>
+                    <h1 class="text-xl font-bold text-stone-800">Chá de Revelação: Team Manu & Team Bento</h1>
+                    <p class="text-xs text-stone-500">Escaneie o QR Code e participe da votação ao vivo!</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <button onclick="switchView('dashboard')" id="btnDashboard" class="px-4 py-2 text-sm font-medium rounded-full bg-pink-500 text-white shadow-md transition hover:bg-pink-600">📊 Painel & Gráfico</button>
-                <button onclick="switchView('vote')" id="btnVote" class="px-4 py-2 text-sm font-medium rounded-full bg-white text-gray-700 border border-gray-200 transition hover:bg-gray-50">📱 Votar Agora</button>
-                <button onclick="switchView('admin')" id="btnAdmin" class="px-4 py-2 text-sm font-medium rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition">⚙️ Enquetes</button>
+                <button onclick="switchView('dashboard')" id="btnDashboard" class="px-4 py-2 text-sm font-medium rounded-full bg-stone-800 text-white shadow-md transition hover:bg-stone-900">📊 Painel & Gráfico</button>
+                <button onclick="switchView('vote')" id="btnVote" class="px-4 py-2 text-sm font-medium rounded-full bg-white text-stone-700 border border-stone-300 transition hover:bg-stone-50">📱 Votar Agora</button>
+                <button onclick="switchView('admin')" id="btnAdmin" class="px-4 py-2 text-sm font-medium rounded-full bg-stone-100 text-stone-700 hover:bg-stone-200 transition">⚙️ Enquetes</button>
             </div>
         </div>
     </header>
@@ -52,13 +52,13 @@
         <div id="viewDashboard" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Gráfico -->
-                <div class="md:col-span-2 bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-pink-100 flex flex-col justify-between">
+                <div class="md:col-span-2 bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-stone-200 flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 bg-pink-100 text-pink-600 rounded-full">Resultado ao Vivo</span>
-                            <span id="totalVotes" class="text-sm font-medium text-gray-500">Total de votos: 0</span>
+                            <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 bg-amber-50 text-amber-800 border border-amber-200 rounded-full">Resultado ao Vivo</span>
+                            <span id="totalVotes" class="text-sm font-medium text-stone-500">Total de votos: 0</span>
                         </div>
-                        <h2 id="activeQuestionTitle" class="text-2xl font-bold text-gray-800 mb-6">Qual será o palpite para o bebê?</h2>
+                        <h2 id="activeQuestionTitle" class="text-2xl font-bold text-stone-800 mb-6">Qual será o palpite para o bebê?</h2>
                     </div>
                     <div class="relative h-72 w-full flex items-center justify-center">
                         <canvas id="pollChart"></canvas>
@@ -66,36 +66,36 @@
                 </div>
 
                 <!-- QR Code -->
-                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-blue-100 flex flex-col items-center justify-center text-center">
-                    <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 bg-blue-100 text-blue-600 rounded-full mb-3">Participe do Telão</span>
-                    <h3 class="font-bold text-lg text-gray-800 mb-2">Escaneie com a Câmera</h3>
-                    <p class="text-xs text-gray-500 mb-4">Aponte o celular para votar e ver o gráfico atualizar na mesma hora!</p>
+                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-stone-200 flex flex-col items-center justify-center text-center">
+                    <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 bg-stone-100 text-stone-700 rounded-full mb-3">Participe do Telão</span>
+                    <h3 class="font-bold text-lg text-stone-800 mb-2">Escaneie com a Câmera</h3>
+                    <p class="text-xs text-stone-500 mb-4">Aponte o celular para votar e ver o gráfico atualizar na mesma hora!</p>
                     
-                    <div id="qrcode" class="bg-white p-3 rounded-2xl shadow-md border border-gray-100 mb-4"></div>
+                    <div id="qrcode" class="bg-white p-3 rounded-2xl shadow-md border border-stone-100 mb-4"></div>
                     
-                    <a id="voteLinkDisplay" href="#" target="_blank" class="text-xs text-blue-500 underline font-medium break-all px-2">Abrir link de votação</a>
+                    <a id="voteLinkDisplay" href="#" target="_blank" class="text-xs text-stone-600 underline font-medium break-all px-2">Abrir link de votação</a>
                 </div>
             </div>
 
             <!-- Galeria -->
-            <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-gray-100">
-                <h3 class="text-sm font-semibold uppercase text-gray-500 mb-4">Destaques do Chá</h3>
+            <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-stone-200">
+                <h3 class="text-sm font-semibold uppercase text-stone-500 mb-4">Destaques do Chá</h3>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    <div class="rounded-2xl overflow-hidden shadow-sm border border-pink-100 relative group aspect-video bg-pink-50 flex items-center justify-center">
+                    <div class="rounded-2xl overflow-hidden shadow-sm border border-stone-200 relative group aspect-video bg-stone-50 flex items-center justify-center">
                         <span class="text-4xl">🎀</span>
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center text-white text-xs font-medium">Team Manu (Menina)</div>
+                        <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center text-white text-xs font-medium">Team Manu (Menina)</div>
                     </div>
-                    <div class="rounded-2xl overflow-hidden shadow-sm border border-blue-100 relative group aspect-video bg-blue-50 flex items-center justify-center">
+                    <div class="rounded-2xl overflow-hidden shadow-sm border border-stone-200 relative group aspect-video bg-stone-50 flex items-center justify-center">
                         <span class="text-4xl">🧢</span>
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center text-white text-xs font-medium">Team Bento (Menino)</div>
+                        <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center text-white text-xs font-medium">Team Bento (Menino)</div>
                     </div>
-                    <div class="rounded-2xl overflow-hidden shadow-sm border border-purple-100 relative group aspect-video bg-purple-50 flex items-center justify-center">
+                    <div class="rounded-2xl overflow-hidden shadow-sm border border-stone-200 relative group aspect-video bg-stone-50 flex items-center justify-center">
                         <span class="text-4xl">🧸</span>
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center text-white text-xs font-medium">Charme & Fofura</div>
+                        <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center text-white text-xs font-medium">Charme & Fofura</div>
                     </div>
-                    <div class="rounded-2xl overflow-hidden shadow-sm border border-amber-100 relative group aspect-video bg-amber-50 flex items-center justify-center">
+                    <div class="rounded-2xl overflow-hidden shadow-sm border border-stone-200 relative group aspect-video bg-stone-50 flex items-center justify-center">
                         <span class="text-4xl">✨</span>
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center text-white text-xs font-medium">Grande Revelação</div>
+                        <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center text-white text-xs font-medium">Grande Revelação</div>
                     </div>
                 </div>
             </div>
@@ -103,10 +103,10 @@
 
         <!-- VOTE VIEW -->
         <div id="viewVote" class="hidden max-w-xl mx-auto space-y-6">
-            <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-pink-100 text-center">
+            <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-stone-200 text-center">
                 <span class="text-4xl mb-2 inline-block">🗳️</span>
-                <h2 id="voteQuestionTitle" class="text-2xl font-bold text-gray-800 mb-2">Qual o seu palpite?</h2>
-                <p class="text-sm text-gray-500 mb-6">Escolha sua opção abaixo e envie seu voto em tempo real.</p>
+                <h2 id="voteQuestionTitle" class="text-2xl font-bold text-stone-800 mb-2">Qual o seu palpite?</h2>
+                <p class="text-sm text-stone-500 mb-6">Escolha sua opção abaixo e envie seu voto em tempo real.</p>
                 
                 <div id="voteOptionsContainer" class="space-y-3 mb-6"></div>
             </div>
@@ -114,10 +114,10 @@
 
         <!-- ADMIN VIEW -->
         <div id="viewAdmin" class="hidden max-w-3xl mx-auto space-y-6">
-            <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-100">
+            <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-stone-200">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold text-gray-800">Gerenciar Enquetes do Chá</h2>
-                    <button onclick="resetAllVotes()" class="px-4 py-2 text-xs font-semibold bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition border border-red-200">🔄 Zerar Todos os Votos</button>
+                    <h2 class="text-xl font-bold text-stone-800">Gerenciar Enquetes do Chá</h2>
+                    <button onclick="resetAllVotes()" class="px-4 py-2 text-xs font-semibold bg-stone-100 text-stone-700 rounded-xl hover:bg-stone-200 transition border border-stone-300">🔄 Zerar Todos os Votos</button>
                 </div>
                 <div id="pollsListContainer" class="space-y-4"></div>
             </div>
@@ -126,7 +126,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-6 text-xs text-gray-400">
+    <footer class="text-center py-6 text-xs text-stone-400">
         Chá de Revelação • Team Manu & Team Bento ✨ Feito com carinho para os convidados
     </footer>
 
@@ -154,7 +154,8 @@
         let polls = [
             {
                 id: "poll_1",
-                title: "Qual será o palpite para o Chá de Revelação?",
+                title: "Qual será o palpite para o Chá de Revelação? (Principal)",
+                isMain: true,
                 options: [
                     { text: "Team Manu 🌸 (Menina)", votes: 0 },
                     { text: "Team Bento 🧢 (Menino)", votes: 0 }
@@ -163,11 +164,81 @@
             },
             {
                 id: "poll_2",
-                title: "Com quem o bebê vai se parecer mais?",
+                title: "O bebê vai nascer com bastante cabelo?",
+                isMain: false,
                 options: [
-                    { text: "Com a Mamãe", votes: 0 },
-                    { text: "Com o Papai", votes: 0 },
-                    { text: "Uma misturinha perfeita", votes: 0 }
+                    { text: "Sim, cabeludo(a)", votes: 0 },
+                    { text: "Pouco cabelo", votes: 0 },
+                    { text: "Quase carequinha", votes: 0 }
+                ],
+                active: false
+            },
+            {
+                id: "poll_3",
+                title: "Qual será a cor dos olhos?",
+                isMain: false,
+                options: [
+                    { text: "Castanhos", votes: 0 },
+                    { text: "Castanho-claros", votes: 0 },
+                    { text: "Verdes", votes: 0 },
+                    { text: "Azuis", votes: 0 },
+                    { text: "Outra", votes: 0 }
+                ],
+                active: false
+            },
+            {
+                id: "poll_4",
+                title: "Com quem o bebê será mais parecido?",
+                isMain: false,
+                options: [
+                    { text: "Mamãe", votes: 0 },
+                    { text: "Papai", votes: 0 },
+                    { text: "Meio a meio", votes: 0 },
+                    { text: "Vai parecer com algum avô/avó", votes: 0 }
+                ],
+                active: false
+            },
+            {
+                id: "poll_5",
+                title: "Quem vai mimar mais o bebê?",
+                isMain: false,
+                options: [
+                    { text: "Mamãe", votes: 0 },
+                    { text: "Papai", votes: 0 },
+                    { text: "Avós 😂", votes: 0 }
+                ],
+                active: false
+            },
+            {
+                id: "poll_6",
+                title: "Quem vai ser mais coruja?",
+                isMain: false,
+                options: [
+                    { text: "Mamãe", votes: 0 },
+                    { text: "Papai", votes: 0 },
+                    { text: "Os dois", votes: 0 }
+                ],
+                active: false
+            },
+            {
+                id: "poll_7",
+                title: "Quem vai tirar mais fotos do bebê?",
+                isMain: false,
+                options: [
+                    { text: "Mamãe", votes: 0 },
+                    { text: "Papai", votes: 0 },
+                    { text: "Os dois", votes: 0 }
+                ],
+                active: false
+            },
+            {
+                id: "poll_8",
+                title: "Quem vai dizer 'não pode' com mais frequência?",
+                isMain: false,
+                options: [
+                    { text: "Mamãe", votes: 0 },
+                    { text: "Papai", votes: 0 },
+                    { text: "Ninguém 😂", votes: 0 }
                 ],
                 active: false
             }
@@ -177,6 +248,7 @@
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
+                // Mescla ou atualiza mantendo a estrutura padrão se houver novas enquetes
                 polls = data;
             } else {
                 set(dbRef, polls);
@@ -191,9 +263,9 @@
                 localStorage.setItem(`voted_${pollId}`, "true");
                 set(dbRef, polls).then(() => {
                     document.getElementById("voteOptionsContainer").innerHTML = `
-                        <div class="p-6 bg-green-50 rounded-2xl border border-green-200 text-center space-y-2">
-                            <p class="text-lg font-semibold text-green-700">🎉 Voto computado com sucesso!</p>
-                            <p class="text-xs text-gray-500">Obrigado por participar! Veja a atualização no gráfico principal.</p>
+                        <div class="p-6 bg-stone-50 rounded-2xl border border-stone-200 text-center space-y-2">
+                            <p class="text-lg font-semibold text-stone-800">🎉 Voto computado com sucesso!</p>
+                            <p class="text-xs text-stone-500">Obrigado por participar! Veja a atualização no gráfico principal.</p>
                         </div>
                     `;
                 });
@@ -222,19 +294,19 @@
             document.getElementById("viewVote").classList.add("hidden");
             document.getElementById("viewAdmin").classList.add("hidden");
 
-            document.getElementById("btnDashboard").className = "px-4 py-2 text-sm font-medium rounded-full bg-white text-gray-700 border border-gray-200 transition hover:bg-gray-50";
-            document.getElementById("btnVote").className = "px-4 py-2 text-sm font-medium rounded-full bg-white text-gray-700 border border-gray-200 transition hover:bg-gray-50";
-            document.getElementById("btnAdmin").className = "px-4 py-2 text-sm font-medium rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition";
+            document.getElementById("btnDashboard").className = "px-4 py-2 text-sm font-medium rounded-full bg-white text-stone-700 border border-stone-300 transition hover:bg-stone-50";
+            document.getElementById("btnVote").className = "px-4 py-2 text-sm font-medium rounded-full bg-white text-stone-700 border border-stone-300 transition hover:bg-stone-50";
+            document.getElementById("btnAdmin").className = "px-4 py-2 text-sm font-medium rounded-full bg-stone-100 text-stone-700 hover:bg-stone-200 transition";
 
             if (viewName === 'dashboard') {
                 document.getElementById("viewDashboard").classList.remove("hidden");
-                document.getElementById("btnDashboard").className = "px-4 py-2 text-sm font-medium rounded-full bg-pink-500 text-white shadow-md transition hover:bg-pink-600";
+                document.getElementById("btnDashboard").className = "px-4 py-2 text-sm font-medium rounded-full bg-stone-800 text-white shadow-md transition hover:bg-stone-900";
             } else if (viewName === 'vote') {
                 document.getElementById("viewVote").classList.remove("hidden");
-                document.getElementById("btnVote").className = "px-4 py-2 text-sm font-medium rounded-full bg-blue-500 text-white shadow-md transition hover:bg-blue-600";
+                document.getElementById("btnVote").className = "px-4 py-2 text-sm font-medium rounded-full bg-stone-800 text-white shadow-md transition hover:bg-stone-900";
             } else if (viewName === 'admin') {
                 document.getElementById("viewAdmin").classList.remove("hidden");
-                document.getElementById("btnAdmin").className = "px-4 py-2 text-sm font-medium rounded-full bg-gray-800 text-white transition";
+                document.getElementById("btnAdmin").className = "px-4 py-2 text-sm font-medium rounded-full bg-stone-800 text-white transition";
             }
             updateUI();
         };
@@ -266,7 +338,7 @@
                     text: currentUrl,
                     width: 160,
                     height: 160,
-                    colorDark: "#db2777",
+                    colorDark: "#292524",
                     colorLight: "#ffffff",
                     correctLevel: QRCode.CorrectLevel.H
                 });
@@ -297,16 +369,18 @@
                             label: 'Votos',
                             data: data,
                             backgroundColor: [
-                                'rgba(244, 114, 182, 0.8)',
-                                'rgba(96, 165, 250, 0.8)',
-                                'rgba(192, 132, 252, 0.8)',
-                                'rgba(251, 191, 36, 0.8)'
+                                'rgba(214, 211, 209, 0.8)',
+                                'rgba(168, 162, 158, 0.8)',
+                                'rgba(120, 113, 108, 0.8)',
+                                'rgba(87, 83, 78, 0.8)',
+                                'rgba(41, 37, 36, 0.8)'
                             ],
                             borderColor: [
-                                'rgb(236, 72, 153)',
-                                'rgb(59, 130, 246)',
-                                'rgb(168, 85, 247)',
-                                'rgb(245, 158, 11)'
+                                'rgb(168, 162, 158)',
+                                'rgb(120, 113, 108)',
+                                'rgb(87, 83, 78)',
+                                'rgb(68, 64, 60)',
+                                'rgb(28, 25, 23)'
                             ],
                             borderWidth: 2,
                             borderRadius: 12
@@ -329,12 +403,11 @@
             document.getElementById("voteQuestionTitle").innerText = poll.title;
             const container = document.getElementById("voteOptionsContainer");
             
-            // Mantém a mensagem de sucesso se já votou
             if (localStorage.getItem(`voted_${poll.id}`)) {
                 container.innerHTML = `
-                    <div class="p-6 bg-pink-50/50 rounded-2xl border border-pink-100 text-center space-y-2">
-                        <p class="text-lg font-semibold text-pink-600">✨ Voto já registrado!</p>
-                        <p class="text-xs text-gray-500">Você já votou nesta enquete. Acompanhe a contagem ao vivo no telão!</p>
+                    <div class="p-6 bg-stone-50 rounded-2xl border border-stone-200 text-center space-y-2">
+                        <p class="text-lg font-semibold text-stone-800">✨ Voto já registrado nesta enquete!</p>
+                        <p class="text-xs text-stone-500">Você já votou aqui. Acompanhe a contagem ao vivo no telão!</p>
                     </div>
                 `;
                 return;
@@ -343,10 +416,10 @@
             container.innerHTML = "";
             poll.options.forEach((opt, index) => {
                 const btn = document.createElement("button");
-                btn.className = "w-full py-4 px-6 text-left font-medium rounded-2xl border border-gray-200 bg-white shadow-sm hover:border-pink-300 hover:bg-pink-50/30 transition flex justify-between items-center group";
+                btn.className = "w-full py-4 px-6 text-left font-medium rounded-2xl border border-stone-200 bg-white shadow-sm hover:border-stone-400 hover:bg-stone-50 transition flex justify-between items-center group";
                 btn.innerHTML = `
-                    <span class="text-gray-700 group-hover:text-pink-600 transition">${opt.text}</span>
-                    <span class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center group-hover:border-pink-500 group-hover:bg-pink-500 group-hover:text-white text-xs transition">➔</span>
+                    <span class="text-stone-700 group-hover:text-stone-900 transition">${opt.text}</span>
+                    <span class="w-6 h-6 rounded-full border border-stone-300 flex items-center justify-center group-hover:border-stone-800 group-hover:bg-stone-800 group-hover:text-white text-xs transition">➔</span>
                 `;
                 btn.onclick = () => submitVote(poll.id, index);
                 container.appendChild(btn);
@@ -359,10 +432,10 @@
 
             polls.forEach(poll => {
                 const card = document.createElement("div");
-                card.className = `p-5 rounded-2xl border ${poll.active ? 'border-pink-300 bg-pink-50/30' : 'border-gray-200 bg-white'}`;
+                card.className = `p-5 rounded-2xl border ${poll.active ? 'border-stone-400 bg-stone-50/80 shadow-md' : 'border-stone-200 bg-white'}`;
                 
                 let optionsHtml = poll.options.map((opt) => `
-                    <div class="text-xs text-gray-600 flex justify-between py-1 border-b border-gray-100 last:border-0">
+                    <div class="text-xs text-stone-600 flex justify-between py-1 border-b border-stone-100 last:border-0">
                         <span>• ${opt.text}</span>
                         <span class="font-semibold">${opt.votes} votos</span>
                     </div>
@@ -371,12 +444,15 @@
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-3">
                         <div>
-                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${poll.active ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-600'}">${poll.active ? 'Ativa no Telão' : 'Inativa'}</span>
-                            <h4 class="font-bold text-gray-800 text-sm mt-1">${poll.title}</h4>
+                            <div class="flex gap-2 items-center">
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${poll.active ? 'bg-stone-800 text-white' : 'bg-stone-200 text-stone-600'}">${poll.active ? 'Ativa no Telão' : 'Inativa'}</span>
+                                ${poll.isMain ? '<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200">Enquete Principal</span>' : ''}
+                            </div>
+                            <h4 class="font-bold text-stone-800 text-sm mt-2">${poll.title}</h4>
                         </div>
-                        ${!poll.active ? `<button onclick="activatePoll('${poll.id}')" class="px-3 py-1 bg-pink-500 text-white text-xs font-medium rounded-xl hover:bg-pink-600 transition">Exibir no Telão</button>` : ''}
+                        ${!poll.active ? `<button onclick="activatePoll('${poll.id}')" class="px-3 py-1 bg-stone-800 text-white text-xs font-medium rounded-xl hover:bg-stone-900 transition">Exibir no Telão</button>` : ''}
                     </div>
-                    <div class="space-y-1 bg-white/60 p-3 rounded-xl border border-gray-100">
+                    <div class="space-y-1 bg-white/80 p-3 rounded-xl border border-stone-200">
                         ${optionsHtml}
                     </div>
                 `;
